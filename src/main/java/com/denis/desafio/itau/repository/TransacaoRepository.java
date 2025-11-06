@@ -14,4 +14,8 @@ public class TransacaoRepository {
     public void save(TransacaoEntity transacao){
         transacoes.add(transacao);
     }
+
+    public void deleteAll(){
+        transacoes.clear();
+    }
 }
