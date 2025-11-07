@@ -25,8 +25,8 @@ public class TransacaoRepository {
         transacoes.clear();
     }
 
-    public EstatisticaResponse getEstatisticas(){
-        List<TransacaoEntity> lastMinute = transacoes.stream().filter(t -> Duration.between(t.getDataHora(), OffsetDateTime.now()).getSeconds() <= 60)
+    public EstatisticaResponse getEstatisticas(int segundos){
+        List<TransacaoEntity> lastMinute = transacoes.stream().filter(t -> Duration.between(t.getDataHora(), OffsetDateTime.now()).getSeconds() <= segundos)
                 .toList();
         if(lastMinute.isEmpty()){
             return new EstatisticaResponse(0,0,0,0,0);

@@ -20,14 +20,19 @@ public class TransacaoController {
         return ResponseEntity.status(201).build();
     }
 
-    @DeleteMapping("transacao")
+    @DeleteMapping("/transacao")
     public ResponseEntity<Void> deleteAll(){
         transacaoService.deleteAll();
         return ResponseEntity.status(200).build();
     }
 
-    @GetMapping
+    @GetMapping("/estatistica")
     public ResponseEntity<EstatisticaResponse> getEstatisticas(){
         return ResponseEntity.status(200).body(transacaoService.getEstatisticas());
+    }
+
+    @PostMapping("/mudar-tempo")
+    public ResponseEntity<String> mudarTempo(@RequestParam int seconds){
+        return ResponseEntity.status(201).body(transacaoService.mudarTempo(seconds));
     }
 }
